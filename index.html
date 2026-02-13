@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>💘 Valentine Surprise</title>
+  <style>
+    :root{
+      --bg1:#fff1f6;
+      --bg2:#ffe6f0;
+      --card:#ffffffcc;
+      --text:#2a1b2d;
+    }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+      min-height:100vh;
+    }
+    .center{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      position:relative;
+      z-index:1;
+    }
+    .card{
+      width:min(720px, 100%);
+      background:var(--card);
+      backdrop-filter: blur(10px);
+      border:1px solid #ffffff80;
+      border-radius:18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      padding:22px;
+    }
+    h1{ margin:0 0 10px; font-size:28px; }
+    p{ line-height:1.55; }
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+      align-items:center;
+    }
+    input{
+      flex:1;
+      min-width:220px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid #e6c7d7;
+      font-size:16px;
+      outline:none;
+    }
+    button{
+      padding:12px 14px;
+      border-radius:12px;
+      border:0;
+      cursor:pointer;
+      font-size:16px;
+      background:#ff4d8d;
+      color:white;
+      box-shadow: 0 6px 16px rgba(255,77,141,0.25);
+    }
+    button:active{ transform: translateY(1px); }
+
+    .error{
+      margin-top:10px;
+      color:#b0003a;
+      display:none;
+    }
+
+    /* Hidden surprise area */
+    #surprise{ display:none; }
+
+    /* Letter styling */
+    .letter{
+      margin-top:12px;
+      padding:18px;
+      border-radius:14px;
+      background: #ffffffd9;
+      border:1px solid #f2c7d8;
+      white-space:pre-wrap;
+      font-size:16px;
+    }
+
+    /* Floating hearts */
+    .heart{
+      position:absolute;
+      bottom:-40px;
+      font-size:18px;
+      animation: floatUp linear forwards;
+      opacity:0.85;
+      z-index:0;
+      user-select:none;
+      pointer-events:none;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+    }
+    @keyframes floatUp{
+      to { transform: translateY(-110vh) rotate(25deg); opacity:0; }
+    }
+
+    /* Flower “garden” */
+    .garden{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap:14px;
+      margin-top:10px;
+    }
+    .flower{
+      border-radius:16px;
+      background: #fff;
+      border:1px solid #f3c7d9;
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .bloom{
+      font-size:48px;
+      line-height:1;
+    }
+    .tag{
+      font-size:13px;
+      opacity:0.8;
+      margin-top:6px;
+    }
+    .sparkle{
+      position:absolute;
+      inset:-40px;
+      background: radial-gradient(circle at 20% 30%, #ffd1e1, transparent 55%),
+                  radial-gradient(circle at 80% 60%, #ffe9a8, transparent 50%),
+                  radial-gradient(circle at 50% 80%, #c7f0ff, transparent 45%);
+      opacity:0.55;
+      transform: rotate(10deg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password screen -->
+  <div class="center" id="gate">
+    <div class="card">
+      <h1>💌 A small surprise</h1>
+      <p>Enter the password to open it.</p>
+      <div class="row">
+        <input id="pw" type="password" placeholder="Password…" autocomplete="off" />
+        <button id="openBtn">Open</button>
+      </div>
+      <div class="error" id="err">That password isn’t right. Try again ❤️</div>
+      <p style="margin-top:14px; font-size:13px; opacity:0.75;">
+        Tip: You can make the password something meaningful (a nickname, a date, etc.).
+      </p>
+    </div>
+  </div>
+
+  <!-- Surprise screen -->
+  <div class="center" id="surprise">
+    <div class="card">
+      <h1>🌸 Happy Valentine’s Day Robyn 💘</h1>
+      <p>Here are some flowers for you:</p>
+
+      <div class="garden" aria-label="Flower garden">
+        <div class="flower"><div class="sparkle"></div><div class="bloom">🌹</div><div class="tag">A rose for you</div></div>
+        <div class="flower"><div class="sparkle"></div><div class="bloom">🌷</div><div class="tag">A tulip too</div></div>
+        <div class="flower"><div class="sparkle"></div><div class="bloom">🌻</div><div class="tag">A sunflower smile</div></div>
+        <div class="flower"><div class="sparkle"></div><div class="bloom">🌸</div><div class="tag">Soft & sweet</div></div>
+        <div class="flower"><div class="sparkle"></div><div class="bloom">💐</div><div class="tag">A bouquet</div></div>
+        <div class="flower"><div class="sparkle"></div><div class="bloom">🪻</div><div class="tag">Just because</div></div>
+      </div>
+
+      <h2 style="margin-top:18px; font-size:20px;">My letter</h2>
+      <div class="letter" id="letter">
+YOUR_LETTER_HERE
+      </div>
+
+      <p style="margin-top:14px; font-size:13px; opacity:0.75;">
+        (If you refresh, you’ll need the password again.)
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // 1) Set your password here:
+    const PASSWORD = "MY_SECRET_PASSWORD";
+
+    // 2) Optional: store "unlocked" state for this browser so refreshing stays unlocked
+    const STORAGE_KEY = "valentine_unlocked";
+
+    const gate = document.getElementById("gate");
+    const surprise = document.getElementById("surprise");
+    const pw = document.getElementById("pw");
+    const err = document.getElementById("err");
+    const btn = document.getElementById("openBtn");
+
+    function unlock(){
+      gate.style.display = "none";
+      surprise.style.display = "flex";
+      err.style.display = "none";
+      localStorage.setItem(STORAGE_KEY, "yes");
+      startHearts();
+    }
+
+    function tryPassword(){
+      if (pw.value === PASSWORD){
+        unlock();
+      } else {
+        err.style.display = "block";
+      }
+    }
+
+    btn.addEventListener("click", tryPassword);
+    pw.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") tryPassword();
+    });
+
+    // Auto-unlock if already unlocked in this browser
+    if (localStorage.getItem(STORAGE_KEY) === "yes"){
+      unlock();
+    }
+
+    // Floating hearts animation
+    function startHearts(){
+      // Make a few hearts every second
+      setInterval(() => {
+        for (let i=0; i<3; i++) spawnHeart();
+      }, 900);
+    }
+
+    function spawnHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
+      const hearts = ["💖","💘","💝","💕","💗","❤️"];
+      h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.animationDuration = (6 + Math.random()*5) + "s";
+      h.style.fontSize = (14 + Math.random()*22) + "px";
+      document.body.appendChild(h);
+
+      // Clean up
+      setTimeout(() => h.remove(), 12000);
+    }
+  </script>
+
+</body>
+</html>
