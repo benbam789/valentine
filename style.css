@@ -137,3 +137,22 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
+
+.heart{
+    position:absolute;
+    bottom:-40px;
+    font-size:18px;
+    animation: floatUp linear forwards;
+    opacity:0.85;
+    z-index:0;
+    user-select:none;
+    pointer-events:none;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+  }
+  
+  @keyframes floatUp{
+    to {
+      transform: translateY(-110vh) rotate(25deg);
+      opacity:0;
+    }
+  }
