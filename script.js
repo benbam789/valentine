@@ -8,6 +8,7 @@ const title = document.getElementById("letter-title");
 const catImg = document.getElementById("letter-cat");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
+let heartsStarted = false;
 
 // Click Envelope
 
@@ -67,4 +68,32 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
 
     finalText.style.display = "block";
+
+    // ✅ Start floating hearts once
+    if (!heartsStarted) {
+        heartsStarted = true;
+        startHearts();
+    }
 });
+
+// Floating hearts animation
+function startHearts(){
+    // Make a few hearts every second
+    setInterval(() => {
+      for (let i=0; i<3; i++) spawnHeart();
+    }, 900);
+  }
+
+function spawnHeart(){
+    const h = document.createElement("div");
+    h.className = "heart";
+    const hearts = ["💖","💘","💝","💕","💗","❤️"];
+    h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.animationDuration = (6 + Math.random()*5) + "s";
+    h.style.fontSize = (14 + Math.random()*22) + "px";
+    document.body.appendChild(h);
+
+    // Clean up
+    setTimeout(() => h.remove(), 12000);
+}
