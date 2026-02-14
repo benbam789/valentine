@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("background2.png");
+    background-image: url("back4.png");
     /*background: radial-gradient(circle at top, #fff1f6, #ffe6f0);*/
     font-family: "Pixelify Sans", sans-serif;
 }
