@@ -138,6 +138,7 @@ display: inline-block;
     border-radius: 12px;
 } */
 .final-text{
+    display: none;    
     max-height: 260px;      /* adjust to taste */
     overflow-y: auto;       /* enables vertical scrolling */
     padding: 16px;
