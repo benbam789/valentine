@@ -11,6 +11,9 @@ const finalText = document.getElementById("final-text");
 let heartsStarted = false;
 
 // Click Envelope
+window.addEventListener("DOMContentLoaded", () => {
+    startHearts();
+});
 
 envelope.addEventListener("click", () => {
     envelope.style.display = "none";
@@ -69,20 +72,32 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 
-    // ✅ Start floating hearts once
-    if (!heartsStarted) {
-        heartsStarted = true;
-        startHearts();
-    }
+    stopHearts();
 });
 
 // Floating hearts animation
+// function startHearts(){
+//     // Make a few hearts every second
+//     setInterval(() => {
+//       for (let i=0; i<3; i++) spawnHeart();
+//     }, 900);
+//   }
+let heartTimer = null;
+
 function startHearts(){
-    // Make a few hearts every second
-    setInterval(() => {
-      for (let i=0; i<3; i++) spawnHeart();
+    if (heartTimer) return; // already running
+
+    heartTimer = setInterval(() => {
+        for (let i = 0; i < 3; i++) spawnHeart();
     }, 900);
-  }
+}
+function stopHearts(){
+    if (heartTimer) {
+        clearInterval(heartTimer);
+        heartTimer = null;
+    }
+}
+
 
 function spawnHeart(){
     const h = document.createElement("div");
