@@ -152,7 +152,7 @@ display: inline-block;
   
     /* smooth scrolling on mobile */
     -webkit-overflow-scrolling: touch;
-  }
+}
  
 .final-text::-webkit-scrollbar{
     width: 6px;
