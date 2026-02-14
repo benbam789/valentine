@@ -4,11 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("heart_background.jpg");
-    background-repeat: no-repeat;      /* ⛔ stop tiling */
-    background-position: center center;/* 🎯 center it */
-    background-size: cover;             /* 📐 fill screen */
-    min-height: 100vh;
+    background-image: url("background2.png");
     /*background: radial-gradient(circle at top, #fff1f6, #ffe6f0);*/
     font-family: "Pixelify Sans", sans-serif;
 }
