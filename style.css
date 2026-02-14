@@ -4,8 +4,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-image: url("heart-bg.jpg");*/
-    background: radial-gradient(circle at top, #fff1f6, #ffe6f0);
+    background-image: url("heart_background.jpg");
+    /*background: radial-gradient(circle at top, #fff1f6, #ffe6f0);*/
     font-family: "Pixelify Sans", sans-serif;
 }
 
